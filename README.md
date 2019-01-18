@@ -1,4 +1,12 @@
-## Building infrastructure on the AWS using Terraform 
+# Infrastructure as Code - Managing AWS With Terraform 
+
+A builder tool consisting of Terraform modules for managing production infrastructure in the AWS with the Terraform. 
+
+This builder helps with setting up AWS infrastructure consisting of:-
+ - basic aws infrastructure (vpc, auto-scaling groups, ec2, ELB etc.)
+ - k8s cluster with Helm and Docker pre-installed
+ - Jenkins CI/CI
+
 
 [Infrastructure installation](./docs/01_Infrastructure_installation.md)
 
