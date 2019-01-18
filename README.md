@@ -1,4 +1,4 @@
-# Infrastructure as Code - Managing AWS With Terraform 
+ # Infrastructure as Code - Managing AWS With Terraform using an infrastructure builder
 
 A builder tool consisting of Terraform modules for managing production infrastructure in the AWS with the Terraform. 
 
