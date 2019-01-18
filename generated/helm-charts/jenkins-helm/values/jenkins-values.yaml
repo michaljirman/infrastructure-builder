@@ -1,0 +1,34 @@
+Master:
+  Image: "jenkins/jenkins"
+  ImageTag: "lts"
+  Cpu: "500m"
+  Memory: "500Mi"
+  ServiceType: ClusterIP
+  ServiceAnnotations:
+    service.beta.kubernetes.io/aws-load-balancer-backend-protocol: http
+  InstallPlugins:
+    - blueocean:1.10.1
+    - credentials:2.1.18
+    - credentials-binding:1.17
+    - ec2:1.42
+    - git:3.9.1
+    - git-client:2.7.6
+    - github:1.29.3
+    - kubernetes:1.14.0
+    - workflow-job:2.31
+    - pipeline-utility-steps:2.2.0
+    - script-security:1.50
+    - slack:2.14
+    - thinBackup:1.9
+    - workflow-aggregator:2.6
+  Ingress:
+    Annotations:
+      nginx.ingress.kubernetes.io/ssl-redirect: "false"
+      nginx.ingress.kubernetes.io/proxy-body-size: 50m
+      nginx.ingress.kubernetes.io/proxy-request-buffering: "off"
+      ingress.kubernetes.io/ssl-redirect: "false"
+      ingress.kubernetes.io/proxy-body-size: 50m
+      ingress.kubernetes.io/proxy-request-buffering: "off"
+  HostName: jenkins.yourcompany.com
+rbac:
+  install: true

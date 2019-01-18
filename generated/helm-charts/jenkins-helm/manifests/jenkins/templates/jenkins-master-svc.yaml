@@ -1,0 +1,25 @@
+---
+# Source: jenkins/templates/jenkins-master-svc.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: my-jenkins
+  labels:
+    app: my-jenkins
+    heritage: "Tiller"
+    release: "my-jenkins"
+    chart: "jenkins-0.28.8"
+    component: "my-jenkins-jenkins-master"
+  annotations:
+    service.beta.kubernetes.io/aws-load-balancer-backend-protocol: http
+    
+spec:
+  ports:
+    - port: 8080
+      name: http
+      targetPort: 8080
+      
+  selector:
+    component: "my-jenkins-jenkins-master"
+  type: ClusterIP
+  

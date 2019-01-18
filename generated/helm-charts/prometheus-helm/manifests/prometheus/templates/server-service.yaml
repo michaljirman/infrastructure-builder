@@ -1,0 +1,23 @@
+---
+# Source: prometheus/templates/server-service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: prometheus
+    chart: prometheus-5.5.3
+    component: "server"
+    heritage: Tiller
+    release: release-name
+  name: release-name-prometheus-server
+spec:
+  ports:
+    - name: http
+      port: 80
+      protocol: TCP
+      targetPort: 9090
+  selector:
+    app: prometheus
+    component: "server"
+    release: release-name
+  type: "ClusterIP"

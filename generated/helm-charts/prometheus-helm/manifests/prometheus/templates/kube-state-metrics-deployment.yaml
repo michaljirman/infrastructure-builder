@@ -1,0 +1,32 @@
+---
+# Source: prometheus/templates/kube-state-metrics-deployment.yaml
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  labels:
+    app: prometheus
+    chart: prometheus-5.5.3
+    component: "kube-state-metrics"
+    heritage: Tiller
+    release: release-name
+  name: release-name-prometheus-kube-state-metrics
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: prometheus
+        component: "kube-state-metrics"
+        release: release-name
+    spec:
+      serviceAccountName: release-name-prometheus-kube-state-metrics
+      containers:
+        - name: prometheus-kube-state-metrics
+          image: "k8s.gcr.io/kube-state-metrics:v1.2.0"
+          imagePullPolicy: "IfNotPresent"
+          ports:
+            - name: metrics
+              containerPort: 8080
+          resources:
+            {}
+            

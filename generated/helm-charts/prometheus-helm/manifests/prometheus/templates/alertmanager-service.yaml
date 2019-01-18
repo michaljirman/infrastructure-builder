@@ -1,0 +1,23 @@
+---
+# Source: prometheus/templates/alertmanager-service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: prometheus
+    chart: prometheus-5.5.3
+    component: "alertmanager"
+    heritage: Tiller
+    release: release-name
+  name: release-name-prometheus-alertmanager
+spec:
+  ports:
+    - name: http
+      port: 80
+      protocol: TCP
+      targetPort: 9093
+  selector:
+    app: prometheus
+    component: "alertmanager"
+    release: release-name
+  type: "ClusterIP"

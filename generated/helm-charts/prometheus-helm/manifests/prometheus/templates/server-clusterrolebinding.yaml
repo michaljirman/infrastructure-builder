@@ -1,0 +1,21 @@
+---
+# Source: prometheus/templates/server-clusterrolebinding.yaml
+
+apiVersion: rbac.authorization.k8s.io/v1beta1
+kind: ClusterRoleBinding
+metadata:
+  labels:
+    app: prometheus
+    chart: prometheus-5.5.3
+    component: "server"
+    heritage: Tiller
+    release: release-name
+  name: release-name-prometheus-server
+subjects:
+  - kind: ServiceAccount
+    name: release-name-prometheus-server
+    namespace: default
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: release-name-prometheus-server

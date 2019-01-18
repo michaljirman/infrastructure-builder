@@ -1,0 +1,17 @@
+---
+# Source: jenkins/templates/home-pvc.yaml
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: my-jenkins
+  labels:
+    app: my-jenkins
+    chart: "jenkins-0.28.8"
+    release: "my-jenkins"
+    heritage: "Tiller"
+spec:
+  accessModes:
+    - "ReadWriteOnce"
+  resources:
+    requests:
+      storage: "8Gi"
