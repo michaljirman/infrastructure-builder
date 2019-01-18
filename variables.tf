@@ -37,5 +37,5 @@ variable "k8s_version" {
 # https://console.aws.amazon.com/ec2/v2/home?region=us-west-2#KeyPairs:
 #
 variable "key_name" {
-  description = "The name of our SSH keypair you've created and downloaded from the AWS console."
+  description = "The name of the AWS EC2 SSH keypair you've created and downloaded from the AWS console."
 }

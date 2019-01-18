@@ -8,7 +8,7 @@ kubectl --kubeconfig=${YOUR_KUBECONFIG} get svc --all-namespaces
 
 NAMESPACE     NAME                                     TYPE           CLUSTER-IP       EXTERNAL-IP                                                               PORT(S)                      AGE
 default       kubernetes                               ClusterIP      172.20.0.1       <none>                                                                    443/TCP                      4d
-default       my-nginx-nginx-ingress-controller        LoadBalancer   172.20.138.107   a2d4e24c1199411e99928029d73ceb73-1526747566.us-west-2.elb.amazonaws.com   80:31248/TCP,443:32545/TCP   1d
+default       my-nginx-nginx-ingress-controller        LoadBalancer   172.20.138.107   xxxxxxxxxx-1526747566.us-west-2.elb.amazonaws.com                         80:31248/TCP,443:32545/TCP   1d
 ```
 
 ### Add support for AWS SSL certificate. 
@@ -21,7 +21,7 @@ Edit by adding:-
 ```yaml
 service.beta.kubernetes.io/aws-load-balancer-backend-protocol: http
 service.beta.kubernetes.io/aws-load-balancer-connection-idle-timeout: "60"
-service.beta.kubernetes.io/aws-load-balancer-ssl-cert: arn:aws:acm:us-west-2:250299311129:certificate/dcd98e7e-ad49-4a7f-8364-b56819d9a19f
+service.beta.kubernetes.io/aws-load-balancer-ssl-cert: arn:aws:acm:us-west-2:111111111111:certificate/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
 service.beta.kubernetes.io/aws-load-balancer-ssl-ports: https
 ```
 
@@ -52,7 +52,7 @@ metadata:
   annotations:
     service.beta.kubernetes.io/aws-load-balancer-backend-protocol: http
     service.beta.kubernetes.io/aws-load-balancer-connection-idle-timeout: "60"
-    service.beta.kubernetes.io/aws-load-balancer-ssl-cert: arn:aws:acm:us-west-2:250299311129:certificate/dcd98e7e-ad49-4a7f-8364-b56819d9a19f
+    service.beta.kubernetes.io/aws-load-balancer-ssl-cert: arn:aws:acm:us-west-2:111111111111:certificate/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
     service.beta.kubernetes.io/aws-load-balancer-ssl-ports: https
   creationTimestamp: "2019-01-16T13:39:41Z"
   labels:
@@ -89,7 +89,7 @@ spec:
 status:
   loadBalancer:
     ingress:
-    - hostname: a2d4e24c1199411e99928029d73ceb73-1526747566.us-west-2.elb.amazonaws.com
+    - hostname: xxxxxxxxxx-1526747566.us-west-2.elb.amazonaws.com
 ```
 
 Manually check the AWS LB configuration. Should be similar to the following:-

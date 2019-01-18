@@ -77,24 +77,27 @@ variable "key_name" {
 ### Validate, plan and apply infrastructure
 ```bash
 $ terraform validate
-$ terraform plan -out inital_infrastructure.plan
-$ terraform apply "inital_infrastructure.plan"
+$ terraform plan -out initial_infrastructure.plan
+$ terraform apply "initial_infrastructure.plan" \
+            -var 'cluster_name=my-company-dev-cluster' \
+            -var 'aws_profile=my-company-dev-profile' \
+            -var 'key_name=my-company-dev-keypair'
 ```
 
 ### Test k8s cluster and accessibility of the pods
 ```bash
-$ kubectl --kubeconfig=kubeconfig get pods --all-namespaces
-$ kubectl --kubeconfig=kubeconfig get deployments --all-namespacess 
+$ kubectl --kubeconfig=${YOUR_KUBECONFIG} get pods --all-namespaces
+$ kubectl --kubeconfig=${YOUR_KUBECONFIG} get deployments --all-namespacess 
 ...
 ```
 
 ### Test if metrics-server was successfully deployed
 ```bash
-$ kubectl --kubeconfig=kubeconfig top nodes
+$ kubectl --kubeconfig=${YOUR_KUBECONFIG} top nodes
 ```
 
 ### Optional 1 (Helm installation)
-[Helm Server (Tiller) installation in kubernetes cluster](02%20Helm%20installation%20and%20deployment.md)
+[Helm Server (Tiller) installation in kubernetes cluster](02_Helm_installation_and_deployment.md)
 
 
 

@@ -1,29 +1,29 @@
 ## Helm Server (Tiller) installation in kubernetes cluster 
 
 ```bash
-$ kubectl --kubeconfig=kubeconfig create -f rbac-config.yaml
+$ kubectl --kubeconfig=${YOUR_KUBECONFIG} create -f rbac-config.yaml
 serviceaccount "tiller" created
 clusterrolebinding "tiller" created
 
-$ KUBECONFIG=kubeconfig helm init --service-account tiller
+$ KUBECONFIG=${YOUR_KUBECONFIG} helm init --service-account tiller
 OR 
-$ KUBECONFIG=kubeconfig helm init --upgrade --service-account tiller
+$ KUBECONFIG=${YOUR_KUBECONFIG} helm init --upgrade --service-account tiller
 ```
 
 In case of the following error `Error: could not find tiller`:
 ```bash
-$ kubectl --kubeconfig=kubeconfig -n kube-system delete deployment tiller-deploy
-$ kubectl --kubeconfig=kubeconfig -n kube-system delete service/tiller-deploy
-$ KUBECONFIG=kubeconfg helm init --upgrade --service-account tiller
+$ kubectl --kubeconfig=${YOUR_KUBECONFIG} -n kube-system delete deployment tiller-deploy
+$ kubectl --kubeconfig=${YOUR_KUBECONFIG} -n kube-system delete service/tiller-deploy
+$ KUBECONFIG=${YOUR_KUBECONFIG} helm init --upgrade --service-account tiller
 ```
 Then try to deploy demo app:
 ```bash
-$ KUBECONFIG=kubeconfig helm install --name=my-slate errm/kubeslate
+$ KUBECONFIG=${YOUR_KUBECONFIG} helm install --name=my-slate errm/kubeslate
 ```
 
 ### Helm - Deployment example
 ```bash
-$ KUBECONFIG=kubeconfig helm install --name=my-slate errm/kubeslate
+$ KUBECONFIG=${YOUR_KUBECONFIG} helm install --name=my-slate errm/kubeslate
 NAME:   my-slate
 LAST DEPLOYED: Tue Jan  8 15:40:06 2019
 NAMESPACE: default
@@ -69,7 +69,7 @@ To access Kubeslate
 
 Please try reloading the page if you see "ServiceUnavailable / no endpoints available for service", as pod creation might take a few moments.
 
-$ kubectl --kubeconfig=kubeconfig proxy
+$ kubectl --kubeconfig=${YOUR_KUBECONFIG} proxy
 Starting to serve on 127.0.0.1:8001
 ```
 
