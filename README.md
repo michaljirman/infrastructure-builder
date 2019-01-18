@@ -7,6 +7,7 @@ This builder helps with setting up AWS infrastructure consisting of:-
  - k8s cluster with Helm and Docker pre-installed
  - Jenkins CI/CI
 
+
 User guides:
 
 - [Infrastructure installation](./docs/01_Infrastructure_installation.md)
